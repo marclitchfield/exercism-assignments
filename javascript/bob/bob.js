@@ -3,7 +3,7 @@ var Bob = function() {
     return {
       containsALetter: function() { return text.toLowerCase() !== text.toUpperCase(); },
       isAllCaps: function() { return text === text.toUpperCase(); },
-      endsWith: function(character) { return text.indexOf(character, text.length - 1) !== -1; },
+      endsWith: function(character) { return text.charAt(text.length - 1) === character; },
       isAllWhitespace: function() { return text.trim() === ''; }
     };
   }
