@@ -3,7 +3,7 @@ var splitIntoLowercaseWords = function(text) {
   return lowercaseWords.filter(function whereExists(word) { 
     return word !== '';
   });
-}
+};
 
 var wordCounts = function(text) {
   var counts = {};
@@ -12,6 +12,6 @@ var wordCounts = function(text) {
     counts[word] = (counts[word] || 0) + 1; 
   });
   return counts;
-}
+};
 
 module.exports = wordCounts;
