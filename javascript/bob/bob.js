@@ -1,20 +1,25 @@
 var Bob = function() {
-  function classifyTone(message) {
-    function messageContainsALetter() { return message.toLowerCase() !== message.toUpperCase(); }
-    function messageIsAllCaps() { return message === message.toUpperCase(); }
-    function messageEndsWith(character) { return message.indexOf(character, message.length - 1) !== -1; }
-    function messageIsAllWhitespace() { return message.trim() === ''; }
-
+  function Message(text) {
     return {
-      isShouting: function() { return messageContainsALetter() && messageIsAllCaps(); },
-      isQuestion: function() { return messageEndsWith('?'); },
-      isSilence: function() { return messageIsAllWhitespace(); }
+      containsALetter: function() { return text.toLowerCase() !== text.toUpperCase(); },
+      isAllCaps: function() { return text === text.toUpperCase(); },
+      endsWith: function(character) { return text.indexOf(character, text.length - 1) !== -1; },
+      isAllWhitespace: function() { return text.trim() === ''; }
+    };
+  }
+
+  function Tone(text) {
+    var message = new Message(text);
+    return {
+      isShouting: function() { return message.containsALetter() && message.isAllCaps(); },
+      isQuestion: function() { return message.endsWith('?'); },
+      isSilence: function() { return message.isAllWhitespace(); }
     };
   }
 
   return {
-    hey: function(message) {
-      var tone = classifyTone(message);
+    hey: function(inputText) {
+      var tone = new Tone(inputText);
       if (tone.isShouting()) { return 'Woah, chill out!'; }
       if (tone.isQuestion()) { return 'Sure.'; }
       if (tone.isSilence()) { return 'Fine. Be that way!'; }
