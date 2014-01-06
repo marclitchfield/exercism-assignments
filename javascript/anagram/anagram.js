@@ -6,7 +6,7 @@ var Anagram = function(word) {
   var sortedLetters = sortLetters(word);
 
   var isAnagram = function(testWord) {
-    return testWord !== word && sortLetters(testWord) === sortedWord;
+    return testWord !== word && sortLetters(testWord) === sortedLetters;
   };
 
   var matchTestWords = function(testWords) {
