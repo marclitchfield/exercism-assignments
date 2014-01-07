@@ -2,7 +2,7 @@ var Message = function(text) {
   return {
     containsALetter: function() { return text.toLowerCase() !== text.toUpperCase(); },
     isAllCaps: function() { return text === text.toUpperCase(); },
-    endsWith: function(character) { return text.charAt(text.length - 1) === character; },
+    endsWith: function(character) { return text.slice(-1) === character; },
     isAllWhitespace: function() { return text.trim() === ''; }
   };
 };
