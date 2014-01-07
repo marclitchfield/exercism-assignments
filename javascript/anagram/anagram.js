@@ -1,28 +1,31 @@
-var Anagram = function(word) {
-  var sortedLettersInWord = sortedLetters(word);
+var Word = function(letters) {
+  var sortedLettersInWord = sortedLetters(letters);
 
-  function sortedLetters(word) {
-    return word.toLowerCase().split('').sort().join('');
-  }
-
-  function areWordsDifferent(word, testWord) {
-    return word.toLowerCase() !== testWord.toLowerCase();
-  }
-
-  function doWordsHaveSameLetters(word, testWord) {
-    return sortedLettersInWord === sortedLetters(testWord);
-  }
-
-  function isAnagram(testWord) {
-    return areWordsDifferent(word, testWord) && doWordsHaveSameLetters(word, testWord);
-  }
-
-  function matchTestWords(testWords) {
-    return testWords.filter(isAnagram);
+  function sortedLetters(letters) {
+    return letters.toLowerCase().split('').sort().join('');
   }
 
   return {
-    match: matchTestWords
+    isDifferentThan: function(otherWord) {
+      return letters.toLowerCase() !== otherWord.toLowerCase();
+    },
+    hasSameLettersAs: function(otherWord) {
+      return sortedLettersInWord === sortedLetters(otherWord);
+    }
+  };
+}
+
+var Anagram = function(letters) {
+  var word = new Word(letters);
+
+  function isAnagramOf(testWord) {
+    return word.isDifferentThan(testWord) && word.hasSameLettersAs(testWord);
+  }
+
+  return {
+    match: function(testWords) {
+      return testWords.filter(isAnagramOf);
+    }
   };
 };
 
