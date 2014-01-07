@@ -55,4 +55,10 @@ describe('Anagram', function() {
     var matches = detector.match(['banana']);
     expect(matches).toEqual([]);
   });
+
+  it("does not detect a word as its own anagram case-insensitively",function() {
+    var detector = new Anagram("Banana");
+    var matches = detector.match(['banana']);
+    expect(matches).toEqual([]);
+  });  
 });
