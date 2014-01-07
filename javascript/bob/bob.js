@@ -18,8 +18,8 @@ var Tone = function(text) {
 
 var Bob = function() {
   return {
-    hey: function(inputText) {
-      var tone = new Tone(inputText);
+    hey: function(text) {
+      var tone = new Tone(text);
       if (tone.isShouting()) { return 'Woah, chill out!'; }
       if (tone.isQuestion()) { return 'Sure.'; }
       if (tone.isSilence()) { return 'Fine. Be that way!'; }
