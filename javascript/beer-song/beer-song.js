@@ -13,8 +13,8 @@ function pronoun(number) {
 }
 
 function action(number) {
-  return number > 0 ? 'Take ' + pronoun(number) + ' down and pass it around'
-      : 'Go to the store and buy some more';
+  if (number > 0) { return 'Take ' + pronoun(number) + ' down and pass it around'; }
+  return 'Go to the store and buy some more';
 }
 
 function capitalize(text) {
