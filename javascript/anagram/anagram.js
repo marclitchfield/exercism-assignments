@@ -1,16 +1,17 @@
 var Word = function(letters) {
-  var sortedLettersInWord = sortedLetters(letters);
+  var lowercaseLetters = letters.toLowerCase();
+  var lowercaseSortedLetters = sortedLetters(lowercaseLetters);
 
   function sortedLetters(letters) {
-    return letters.toLowerCase().split('').sort().join('');
+    return letters.split('').sort().join('');
   }
 
   return {
     isDifferentThan: function(otherWord) {
-      return letters.toLowerCase() !== otherWord.toLowerCase();
+      return lowercaseLetters !== otherWord.toLowerCase();
     },
     hasSameLettersAs: function(otherWord) {
-      return sortedLettersInWord === sortedLetters(otherWord);
+      return lowercaseSortedLetters === sortedLetters(otherWord.toLowerCase());
     }
   };
 }
