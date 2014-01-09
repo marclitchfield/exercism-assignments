@@ -3,12 +3,11 @@ var lowercaseWords = function(text) {
 };
 
 var wordCounts = function(text) {
-  var counts = {};
   var words = lowercaseWords(text);
-  words.forEach(function incrementCountForWord(word) { 
+  return words.reduce(function wordCounts(counts, word) { 
     counts[word] = (counts[word] || 0) + 1; 
-  });
-  return counts;
+    return counts;
+  }, {});
 };
 
 module.exports = wordCounts;
