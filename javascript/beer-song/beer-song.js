@@ -1,30 +1,40 @@
-function bottlesRemaining(number) {
-  if (number === 0) { return 'no more bottles of beer'; }
-  if (number === 1) { return '1 bottle of beer'; }
-  return number + ' bottles of beer';
-}
+function Verse(number) {
 
-function next(number) {
-  return number === 0 ? 99 : number - 1;
-}
+  function bottlesRemaining(nextNumber) {
+    var remaining = nextNumber !== undefined ? nextNumber : number;
+    if (remaining === 0) { return 'no more bottles of beer'; }
+    if (remaining === 1) { return '1 bottle of beer'; }
+    return remaining + ' bottles of beer';
+  }
 
-function pronoun(number) {
-  return number === 1 ? 'it' : 'one';
-}
+  function next() {
+    return number === 0 ? 99 : number - 1;
+  }
 
-function action(number) {
-  if (number > 0) { return 'Take ' + pronoun(number) + ' down and pass it around'; }
-  return 'Go to the store and buy some more';
-}
+  function pronoun() {
+    return number === 1 ? 'it' : 'one';
+  }
 
-function capitalize(text) {
-  return text.charAt(0).toUpperCase() + text.slice(1);
+  function action() {
+    if (number > 0) { return 'Take ' + pronoun() + ' down and pass it around'; }
+    return 'Go to the store and buy some more';
+  }
+
+  function capitalize(text) {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+  }
+
+  var text = capitalize(bottlesRemaining() + ' on the wall, ' 
+          + bottlesRemaining() + '.\n' + action() + ', '
+          + bottlesRemaining(next()) + ' on the wall.\n');
+
+  return {
+    text: text
+  };
 }
 
 function verse(number) {
-  return capitalize(bottlesRemaining(number) + ' on the wall, ' 
-      + bottlesRemaining(number) + '.\n' + action(number) + ', '
-      + bottlesRemaining(next(number)) + ' on the wall.\n');
+  return new Verse(number).text;
 }
 
 function sing(fromNumber, toNumber) {
