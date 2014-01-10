@@ -1,4 +1,4 @@
-function Verse(number) {
+function verse(number) {
 
   function bottlesRemaining(nextNumber) {
     var remaining = nextNumber !== undefined ? nextNumber : number;
@@ -24,17 +24,9 @@ function Verse(number) {
     return text.charAt(0).toUpperCase() + text.slice(1);
   }
 
-  var text = capitalize(bottlesRemaining() + ' on the wall, ' 
+  return capitalize(bottlesRemaining() + ' on the wall, ' 
           + bottlesRemaining() + '.\n' + action() + ', '
           + bottlesRemaining(next()) + ' on the wall.\n');
-
-  return {
-    text: text
-  };
-}
-
-function verse(number) {
-  return new Verse(number).text;
 }
 
 function sing(fromNumber, toNumber) {
